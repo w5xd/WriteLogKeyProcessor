@@ -1,0 +1,19 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" 
+              GeneratedClassNamespace="WriteLogKeyProcessor" GeneratedClassName="KeyProcessor">
+  <Profiles />
+  <Settings>
+    <Setting Name="AllowedBandsRadio1" Type="System.Double[]" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="AllowedBandsRadio2" Type="System.Double[]" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="AllowedBandsRadio3" Type="System.Double[]" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="AllowedBandsRadio4" Type="System.Double[]" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

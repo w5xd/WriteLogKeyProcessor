@@ -1,0 +1,1 @@
+ConfigureShortcuts WriteLogKeyProcessor KeyProcessor /uninstall
