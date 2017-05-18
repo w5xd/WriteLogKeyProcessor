@@ -1,5 +1,5 @@
 if exist ConfigureShortcuts.exe (
-ConfigureShortcuts WriteLogKeyProcessor KeyProcessor /install
-exit
+  ConfigureShortcuts WriteLogKeyProcessor KeyProcessor /install
+) else (
+  msg * "You need to Extract All to install"
 )
-mshta javascript:alert("You need to Extract All to install");close();
