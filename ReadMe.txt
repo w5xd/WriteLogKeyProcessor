@@ -13,13 +13,15 @@ The result just puts a dll file in WriteLog's Programs directory
 and sets a couple of registry entries.
 
 The next time you run WriteLog, take a look at the menu entry Setup/Keyboard-Shortcuts.
-Under "CommandToRun" there are now three new commands due to this installation:
+Under "CommandToRun" there are now new commands due to this installation:
 
 External: Setup
 External: VhfBandDown
 External: VhfBandUp
+External: VhfBandDownRetainCall
+External: VhfBandUpRetainCall
 
-You will want to use that dialog to map the 3 above shortcuts to one or another keyboard
+You will want to use that dialog to map the above shortcuts to one or another keyboard
 key. Recommendations:
 	External: Setup should go to a not-often-used key.
 	External: VhfBandDown should go to Alt+F01

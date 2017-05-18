@@ -11,8 +11,13 @@ using System.Text;
 namespace WriteLogKeyProcessor
 {
     //class RunModeProcessor is the connection from WriteLog 
-    public class KeyProcessor : 
+    public class KeyProcessor :
+#if IMPLEMENT_ENTRYSTATE
+        // This demo doesn't need the interfaces from EntryStateHelper
         WriteLogShortcutHelper.EntryStateHelper /* shortcut helper is distributed with WriteLog */
+#else
+        WriteLogShortcutHelper.ShortcutHelper /* ditto */
+#endif
     {
         /* These are the names of the commands as they will appear
            in WriteLog's Keyboard Shortcuts "Command to run" list: */
@@ -24,6 +29,8 @@ namespace WriteLogKeyProcessor
                 // Look in the E's in that menu.
                 "VhfBandUp", 
                 "VhfBandDown",
+                "VhfBandUpRetainCall",
+                "VhfBandDownRetainCall",
          };
 
         private BandsInContest m_bands;
@@ -63,8 +70,9 @@ namespace WriteLogKeyProcessor
             switch (which)
             {
                 case 0: // "setup"
-                     using (KeyProcessorSettingsForm f = new KeyProcessorSettingsForm(m_Settings, m_bands = new BandsInContest(wl)))
-                        f.ShowDialog();
+                     using (KeyProcessorSettingsForm f = 
+                         new KeyProcessorSettingsForm(m_Settings, m_bands = new BandsInContest(wl)))
+                            f.ShowDialog();
                     break;
 
                 case 1: // "VhfBandUp"
@@ -73,6 +81,14 @@ namespace WriteLogKeyProcessor
 
                 case 2: // "VhfBandDown"
                     ChangeBand(wl, "BandsBandDown");
+                    break;
+
+                case 3: // "VhfBandUpRetainCall"
+                    ChangeBand(wl, "BandsBandUpRetainCall");
+                    break;
+
+                case 4: // "VhfBandDownRetainCall"
+                    ChangeBand(wl, "BandsBandDownRetainCall");
                     break;
 
                 default:
@@ -101,8 +117,8 @@ namespace WriteLogKeyProcessor
         #endregion
 
         #region IEntryNotification Members
-        // no overrides in this demo...
-  
+#if IMPLEMENT_ENTRYSTATE // no overrides in this demo...
+        
         public override void OnProgramMessageCompleted(WriteLogClrTypes.ISingleEntry rEntry, WriteLogClrTypes.IWriteL rWl)
         {        }
 
@@ -127,6 +143,7 @@ namespace WriteLogKeyProcessor
         public override void OnEntryWindowUpdated(WriteLogClrTypes.ISingleEntry rentry, short isblank, 
             WriteLogClrTypes.IWriteL wl)
         {        }
+#endif
         #endregion
 
     }

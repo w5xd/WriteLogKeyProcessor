@@ -4,7 +4,9 @@ labeld "External: <name>" based on what it finds in the assembly.
 
 Separate from the shortcuts, WriteLog will also call the IEntryNotification 
 interface on the module. Each method is called at a defined step in 
-WriteLog's keyboard processing.
+WriteLog's keyboard processing. However, the functionality in this demo doesn't need 
+an implementation of IEntryNotification so the necessary source is excluded via
+the project Properties compile-time symbol IMPLEMENT_ENTRYSTATE.
 
 To build this from source, it should work with Visual Studio Express 2010 as-is
 ...with one exception...
