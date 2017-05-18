@@ -39,7 +39,7 @@ namespace WriteLogKeyProcessor
             if ((curId >= 1) && (curId <= 4))
             {
                 String sName = String.Format("AllowedBandsRadio{0}", curId);
-                int maxCycles = 10;
+                int maxCycles = m_bands.BandIdxToBand.Count + 1;
                 do
                 {
                     // invoke the "Normal" Band up or down
