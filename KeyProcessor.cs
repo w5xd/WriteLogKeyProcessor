@@ -117,30 +117,45 @@ namespace WriteLogKeyProcessor
         #endregion
 
         #region IEntryNotification Members
-#if IMPLEMENT_ENTRYSTATE // no overrides in this demo...
+
+#if IMPLEMENT_ENTRYSTATE 
         
+        // Called when WriteLog finishes sending an f-key message on the given Entry Window
         public override void OnProgramMessageCompleted(WriteLogClrTypes.ISingleEntry rEntry, WriteLogClrTypes.IWriteL rWl)
         {        }
 
+        // The timed-CQ interval has elapsed since the end of any f-key transmission
         public override void OnListenIntervalComplete(WriteLogClrTypes.ISingleEntry rEntry, WriteLogClrTypes.IWriteL rWl)
         {        }
 
-        public override void OnStartMessage(WriteLogClrTypes.ISingleEntry rEntry, 
-            WriteLogClrTypes.IWriteL rWl, int msg,  int stillActive)
+       // a program F-key message is starting
+       public override void OnStartMessage(WriteLogClrTypes.ISingleEntry rEntry, 
+            WriteLogClrTypes.IWriteL rWl, 
+           int msg,  // which message 1 is F1, 2 is F2, etc.
+           int stillActive // non-zero means the "red box" is on--operator has caret in CALL field
+           )
         {        }
 
+        // If we return non-zero, WriteLog won't send this message, and forgets the operator typed the f-key
+        // presumeably, this shortcut processor will do something less mysterious,
+        // like maybe remember that key press and send it later.
         public override short DelayStartMessage(WriteLogClrTypes.ISingleEntry rEntry, WriteLogClrTypes.IWriteL rWl, int msg)
         {
              return 0;
         }
 
+        // the red box in WriteLog went away. (message transmission still in progress, but the CALL sent can no longer be changed)
+        // This can be because the operator moved the caret out of CALL, or because the CALL is now being sent.
         public override void OnMessageCALLComplete(WriteLogClrTypes.ISingleEntry rEntry, WriteLogClrTypes.IWriteL rWl)
         {         }
 
+        // The operator logged a QSO (but no call here if operator held down CTRL or SHIFT)
         public override void OnLoggedQso(WriteLogClrTypes.ISingleEntry rEntry, WriteLogClrTypes.IWriteL rWl)
         {        }
 
-        public override void OnEntryWindowUpdated(WriteLogClrTypes.ISingleEntry rentry, short isblank, 
+        // every operator keystroke sent to the Entry Window characters calls us here. 
+        public override void OnEntryWindowUpdated(WriteLogClrTypes.ISingleEntry rentry, 
+            short isblank, // this is non-zero if there are no operator-entered characters in the Entry Window
             WriteLogClrTypes.IWriteL wl)
         {        }
 #endif
