@@ -1,7 +1,7 @@
 ﻿This is a simple keyboard processor for WriteLog. It is written to the published WriteLog
-interfaces for a plugin and "simple" with the exception that it implements a couple of
+interfaces for a plugin and is "simple" with the exception that it fully implements a couple of
 keyboard shortcuts that will limit WriteLog's Entry Window to a selected subset of the
-bands in the contest.
+bands in the contest, and has a dialog box to edit those settings.
 
 To Install:
 In Windows File Manager, right click the downloaded file WriteLogKeyProcessorVn.m.zip 
